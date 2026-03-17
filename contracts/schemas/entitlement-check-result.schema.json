@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/schemas/entitlement-check-result.schema.json",
+  "title": "EntitlementCheckResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "request_id",
+    "idempotency_key",
+    "created_at",
+    "subject_user_id",
+    "resource_id",
+    "allowed",
+    "reason"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "request_id": { "type": "string", "minLength": 8 },
+    "idempotency_key": { "type": "string", "minLength": 8 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "subject_user_id": { "type": "string" },
+    "resource_id": { "type": "string" },
+    "allowed": { "type": "boolean" },
+    "reason": { "type": "string" },
+    "expires_at": { "type": "string", "format": "date-time" }
+  }
+}

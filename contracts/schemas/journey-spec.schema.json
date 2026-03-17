@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/schemas/journey-spec.schema.json",
+  "title": "JourneySpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "journey_id",
+    "slug",
+    "title",
+    "steps",
+    "content_hash",
+    "content_version_id",
+    "request_id",
+    "idempotency_key",
+    "created_at"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "journey_id": { "type": "string", "pattern": "^journey_[a-zA-Z0-9_-]+$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["step_id", "order", "card_id"],
+        "properties": {
+          "step_id": { "type": "string" },
+          "order": { "type": "integer", "minimum": 1 },
+          "card_id": { "type": "string" }
+        }
+      }
+    },
+    "content_hash": { "type": "string", "minLength": 8 },
+    "content_version_id": { "type": "string", "minLength": 8 },
+    "request_id": { "type": "string", "minLength": 8 },
+    "idempotency_key": { "type": "string", "minLength": 8 },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

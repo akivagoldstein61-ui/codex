@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/schemas/card-spec.schema.json",
+  "title": "CardSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "card_id",
+    "deck_id",
+    "slug",
+    "title",
+    "content_hash",
+    "content_version_id",
+    "request_id",
+    "idempotency_key",
+    "created_at"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "card_id": { "type": "string", "pattern": "^card_[a-zA-Z0-9_-]+$" },
+    "deck_id": { "type": "string", "pattern": "^deck_[a-zA-Z0-9_-]+$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "image_asset_id": { "type": "string" },
+    "content_hash": { "type": "string", "minLength": 8 },
+    "content_version_id": { "type": "string", "minLength": 8 },
+    "request_id": { "type": "string", "minLength": 8 },
+    "idempotency_key": { "type": "string", "minLength": 8 },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}
