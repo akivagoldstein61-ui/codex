@@ -1,13 +1,21 @@
 # Deck Factory OS / Mystery of Meaning — Foundation Spec (Slice 1)
 
-## Scope of this slice
-This slice defines **contract-first foundations** only:
+## Scope
+The repository now contains two foundational slices:
+
+### Slice 1 — Contract-first foundations
 - canonical truth-layer assumptions
 - runtime boundaries
 - typed payload contracts for ingestion/runtime events
 - rollback guidance for contract changes
 
-No schema migrations, auth-policy changes, payment paths, or deployment changes are included.
+### Slice 2 — Minimal data foundation
+- explicit SQL migration files for core content/runtime tables
+- immutable content version markers and ingestion run tracking
+- deny-by-default RLS posture for user-sensitive/runtime tables
+- migration and policy-oriented tests
+
+This repository still does **not** include payment paths, deployment changes, or external write integrations.
 
 ## Canonical truth layer
 1. Google Sheets is canonical for job/state ledger.
