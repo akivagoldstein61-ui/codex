@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/schemas/content-validation-report.schema.json",
+  "title": "ContentValidationReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "request_id",
+    "idempotency_key",
+    "created_at",
+    "valid",
+    "errors",
+    "warnings"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "request_id": { "type": "string", "minLength": 8 },
+    "idempotency_key": { "type": "string", "minLength": 8 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "valid": { "type": "boolean" },
+    "errors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "content_hash": { "type": "string" },
+    "content_version_id": { "type": "string" }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contracts/schemas/asset-manifest.schema.json",
+  "title": "AssetManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "manifest_id",
+    "content_hash",
+    "content_version_id",
+    "request_id",
+    "idempotency_key",
+    "created_at",
+    "assets"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "manifest_id": { "type": "string" },
+    "content_hash": { "type": "string", "minLength": 8 },
+    "content_version_id": { "type": "string", "minLength": 8 },
+    "request_id": { "type": "string", "minLength": 8 },
+    "idempotency_key": { "type": "string", "minLength": 8 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["asset_id", "kind", "source_ref", "premium"],
+        "properties": {
+          "asset_id": { "type": "string" },
+          "kind": { "type": "string" },
+          "source_ref": { "type": "string" },
+          "premium": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
